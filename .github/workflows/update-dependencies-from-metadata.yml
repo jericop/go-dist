@@ -352,6 +352,9 @@ jobs:
           shopt -s inherit_errexit
 
           jq -s 'add' ${{ steps.make-outputdir.outputs.outputdir }}/metadata-files/* > "${{ steps.make-outputdir.outputs.outputdir }}/metadata.json"
+          # TODO: remove this
+          echo "metadata-file"
+          cat ${{ steps.make-outputdir.outputs.outputdir }}/metadata.json | jq
 
       - name: Update dependencies from metadata.json
         id: update
