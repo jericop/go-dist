@@ -319,7 +319,7 @@ jobs:
       - name: Checkout Branch
         uses: jericop/github-config/actions/pull-request/checkout-branch@mock-upload
         with:
-          branch: automation/dependencies/update-from-metadata
+          branch: automation/dependencies/update-from-metadata/multi-arch
 
       - name: Make Temporary Artifact Directory
         id: make-outputdir
@@ -376,11 +376,11 @@ jobs:
           keyid: ${{ secrets.PAKETO_BOT_GPG_SIGNING_KEY_ID }}
           key: ${{ secrets.PAKETO_BOT_GPG_SIGNING_KEY }}
 
-      - name: Push Branch 'automation/dependencies/update-from-metadata'
+      - name: Push Branch 'automation/dependencies/update-from-metadata/multi-arch'
         if: ${{ steps.commit.outputs.commit_sha != '' }}
         uses: jericop/github-config/actions/pull-request/push-branch@mock-upload
         with:
-          branch: automation/dependencies/update-from-metadata
+          branch: automation/dependencies/update-from-metadata/multi-arch
 
       - name: Open Pull Request
         if: ${{ steps.commit.outputs.commit_sha != '' }}
@@ -388,7 +388,7 @@ jobs:
         with:
           token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
           title: "Updates buildpack.toml with ${{ steps.update.outputs.new-versions }}"
-          branch: automation/buildpack.toml/update-from-metadata
+          branch: automation/buildpack.toml/update-from-metadata/multi-arch
 
   failure:
     name: Alert on Failure
