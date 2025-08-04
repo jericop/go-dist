@@ -388,7 +388,8 @@ jobs:
         with:
           token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
           title: "Updates buildpack.toml with ${{ steps.update.outputs.new-versions }}"
-          branch: automation/buildpack.toml/update-from-metadata/multi-arch
+          # branch: automation/buildpack.toml/update-from-metadata/multi-arch
+          branch: automation/dependencies/update-from-metadata/multi-arch
 
   failure:
     name: Alert on Failure
