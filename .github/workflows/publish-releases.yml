@@ -17,7 +17,7 @@ jobs:
         id: drafts
         env:
           GITHUB_TOKEN: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
-        uses: paketo-buildpacks/github-config/actions/release/publish-drafts@main
+        uses: jericop/github-config/actions/release/publish-drafts@mock-upload
         with:
           repo: ${{ github.repository }}
 
@@ -28,7 +28,7 @@ jobs:
     if: ${{ always() && needs.publish.result == 'failure' }}
     steps:
       - name: File Failure Alert Issue
-        uses: paketo-buildpacks/github-config/actions/issue/file@main
+        uses: jericop/github-config/actions/issue/file@mock-upload
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repo: ${{ github.repository }}

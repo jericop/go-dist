@@ -74,7 +74,7 @@ jobs:
 
     - name: Reset Draft Release
       id: reset
-      uses: paketo-buildpacks/github-config/actions/release/reset-draft@main
+      uses: jericop/github-config/actions/release/reset-draft@mock-upload
       with:
         repo: ${{ github.repository }}
         token: ${{ github.token }}
@@ -82,7 +82,7 @@ jobs:
     - name: Calculate Semver Tag
       if: github.event.inputs.version == ''
       id: semver
-      uses: paketo-buildpacks/github-config/actions/tag/calculate-semver@main
+      uses: jericop/github-config/actions/tag/calculate-semver@mock-upload
       with:
         repo: ${{ github.repository }}
         token: ${{ github.token }}
@@ -112,14 +112,14 @@ jobs:
 
     - name: Create Release Notes
       id: create-release-notes
-      uses: paketo-buildpacks/github-config/actions/release/notes@main
+      uses: jericop/github-config/actions/release/notes@mock-upload
       with:
         repo: ${{ github.repository }}
         token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
         buildpack_type: ${{ steps.get_buildpack_type.outputs.buildpack_type }}
 
     - name: Create Release
-      uses: paketo-buildpacks/github-config/actions/release/create@main
+      uses: jericop/github-config/actions/release/create@mock-upload
       with:
         repo: ${{ github.repository }}
         token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
@@ -149,7 +149,7 @@ jobs:
     if: ${{ always() && needs.unit.result == 'failure' || needs.integration.result == 'failure' || needs.release.result == 'failure' }}
     steps:
     - name: File Failure Alert Issue
-      uses: paketo-buildpacks/github-config/actions/issue/file@main
+      uses: jericop/github-config/actions/issue/file@mock-upload
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         repo: ${{ github.repository }}

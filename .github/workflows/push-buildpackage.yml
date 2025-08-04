@@ -29,7 +29,7 @@ jobs:
 
     - name: Download
       id: download
-      uses: paketo-buildpacks/github-config/actions/release/download-asset@main
+      uses: jericop/github-config/actions/release/download-asset@mock-upload
       with:
         url: ${{ steps.event.outputs.download_url }}
         output: "/github/workspace/buildpackage.cnb"
@@ -108,7 +108,7 @@ jobs:
     if: ${{ always() && needs.push.result == 'failure' }}
     steps:
     - name: File Failure Alert Issue
-      uses: paketo-buildpacks/github-config/actions/issue/file@main
+      uses: jericop/github-config/actions/issue/file@mock-upload
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         repo: ${{ github.repository }}
