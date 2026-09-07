@@ -1,6 +1,6 @@
 module github.com/paketo-buildpacks/go-dist/dependency/retrieval
 
-go 1.24.1
+go 1.27.1
 
 require (
 	github.com/Masterminds/semver v1.5.0
